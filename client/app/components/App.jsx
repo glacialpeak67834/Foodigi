@@ -1,20 +1,19 @@
-import React from 'react';
-
-import Button from './Button.jsx';
-import Search from './Search.jsx';
-import Results from './Results.jsx';
-import Load from './Load.jsx';
-import Yelp from './Yelp.jsx';
-// import ErrorMsg from './ErrorMsg.jsx';
-// import Coords from './dev_components/Coords.jsx';
-import helpers from '../helpers';
-import services from '../services';
-import FacebookButton from './facebookButton.jsx';
-
-import testData from './dev_components/testdata.js';
-
 import '../css/app.scss';
 
+import React from 'react';
+
+import helpers from '../helpers';
+import services from '../services';
+import testData from './dev_components/testdata.js';
+import Button from './Button.jsx';
+import FacebookButton from './facebookButton.jsx';
+import Load from './Load.jsx';
+import Results from './Results.jsx';
+import Search from './Search.jsx';
+import Yelp from './Yelp.jsx';
+
+// import ErrorMsg from './ErrorMsg.jsx';
+// import Coords from './dev_components/Coords.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
