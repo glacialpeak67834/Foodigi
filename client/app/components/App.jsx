@@ -94,7 +94,7 @@ class App extends React.Component {
       if (this.state.showResults) {
         this.setState({ loading: true, errorMsg: '' });
         services.searchYelp(
-          this.state.food,
+          this.state.food = 'taco',
           this.state.currCoords.latitude,
           this.state.currCoords.longitude
         )
