@@ -101,7 +101,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>course-IT</h1>
+        <h1>course.it</h1>
         { this.state.loading
           ? <Load />
           :
