@@ -15,13 +15,13 @@
     "prestart": "npm install && npm run build",
     "build": "npm run babel && npm run webpack",
     "lint": "eslint 'client/app/**/*.jsx' 'server/**/*.js';",
-    "dev": "export NODE_ENV=development && npm run lint && npm run babel && concurrently --kill-others --raw \"npm run node-env\" \"npm run watch\" "
+    "dev": "set NODE_ENV=development && npm run lint && npm run babel && concurrently --kill-others --raw \"npm run node-env\" \"npm run watch\" "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/polarbasin/polarbasin.git"
   },
-  "author": "Harvey Sanders + Daniel Glaser",
+  "author": "Kendall Spears & Neal Taylor",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/polarbasin/polarbasin/issues"
