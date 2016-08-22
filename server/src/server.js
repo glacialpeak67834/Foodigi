@@ -3,6 +3,7 @@ import path from 'path';
 import morgan from 'morgan';
 import db from '../database/connection.js';
 import passport from 'passport';
+import client from '../../twilioClient.js';
 
 import services from './services';
 // import testRouteHandlers from './testRouteHandlers';
@@ -13,16 +14,19 @@ export default function (app) {
   }
 
   const publicPath = path.join(__dirname, '../../client/public/');
-
   app.use(express.static(publicPath));
 
-app.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
+  app.get('/joinMe', function () {
+    client.sendSms();
+    console.log('route hit');
   });
+// app.post('/login',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     res.redirect('/users/' + req.user.username);
+//   });
 
   app.get('/api/v1/search', services.handleYelpSearch);
   // app.get('/api/v1/search', testRouteHandlers.fakeYelpSearch);
