@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
   randomItem() {
-    let foods = ['pizza', 'tacos', 'bacon', 'souls of the forgotten', 'cheeseburger', 'salad', 'pie', 'unicorn tears', 'doughnuts', 'chicken', 'fries', 'bbq ribs', 'cheesecake', 'steak', 'seafood', 'sandwich', 'shrimp', 'mashed potatoes', 'mac & cheese', 'waffles', 'pancakes', 'spinach'];
+    let foods = ['pizza', 'tacos', 'souls of the forgotten', 'cheeseburger', 'salad', 'pie', 'unicorn tears', 'doughnuts', 'chicken', 'fries', 'bbq ribs', 'cheesecake', 'steak', 'seafood', 'sandwich', 'shrimp', 'mashed potatoes', 'mac & cheese', 'waffles', 'pancakes', 'spinach'];
     foods = foods[Math.floor(Math.random()*foods.length)];
     return foods;
   };
