@@ -60,12 +60,19 @@ class App extends React.Component {
     });
   }
 
+  randomItem() {
+    let foods = ['pizza', 'tacos', 'bacon', 'souls of the forgotten', 'cheeseburger', 'salad', 'pie', 'unicorn tears', 'doughnuts', 'chicken', 'fries', 'bbq ribs', 'cheesecake', 'steak', 'seafood', 'sandwich', 'shrimp', 'mashed potatoes', 'mac & cheese', 'waffles', 'pancakes', 'spinach'];
+    foods = foods[Math.floor(Math.random()*foods.length)];
+    return foods;
+  };
+
   handleGoClick() {
+    let item = this.randomItem();
     this.setState({ showResults: !this.state.showResults }, () => {
       if (this.state.showResults) {
         this.setState({ loading: true, errorMsg: '' });
         services.searchYelp(
-          this.state.food = 'taco',
+          this.state.food ? this.state.food : this.state.food = item,
           this.state.currCoords.latitude,
           this.state.currCoords.longitude
         )
@@ -113,11 +120,10 @@ class App extends React.Component {
               </div>
               )
             }
-            <Button
+            <Button 
               handleClick={this.handleGoClick}
-              text={this.state.showResults ? 'BACK' : 'GO'}
+              text={this.state.showResults ? 'BACK' : 'FEED ME'}
             />
-            <FacebookButton />
           </div>)
         }
         <Yelp />
