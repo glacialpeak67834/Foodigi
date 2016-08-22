@@ -1,20 +1,19 @@
-import React from 'react';
-
-import Button from './Button.jsx';
-import Search from './Search.jsx';
-import Results from './Results.jsx';
-import Load from './Load.jsx';
-import Yelp from './Yelp.jsx';
-// import ErrorMsg from './ErrorMsg.jsx';
-// import Coords from './dev_components/Coords.jsx';
-import helpers from '../helpers';
-import services from '../services';
-import FacebookButton from './facebookButton.jsx';
-
-import testData from './dev_components/testdata.js';
-
 import '../css/app.scss';
 
+import React from 'react';
+
+import helpers from '../helpers';
+import services from '../services';
+import testData from './dev_components/testdata.js';
+import Button from './Button.jsx';
+import FacebookButton from './facebookButton.jsx';
+import Load from './Load.jsx';
+import Results from './Results.jsx';
+import Search from './Search.jsx';
+import Yelp from './Yelp.jsx';
+
+// import ErrorMsg from './ErrorMsg.jsx';
+// import Coords from './dev_components/Coords.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -61,12 +60,19 @@ class App extends React.Component {
     });
   }
 
+  randomItem() {
+    let foods = ['pizza', 'tacos', 'bacon', 'souls of the forgotten', 'cheeseburger', 'salad', 'pie', 'unicorn tears', 'doughnuts', 'chicken', 'fries', 'bbq ribs', 'cheesecake', 'steak', 'seafood', 'sandwich', 'shrimp', 'mashed potatoes', 'mac & cheese', 'waffles', 'pancakes', 'spinach'];
+    foods = foods[Math.floor(Math.random()*foods.length)];
+    return foods;
+  };
+
   handleGoClick() {
+    let item = this.randomItem();
     this.setState({ showResults: !this.state.showResults }, () => {
       if (this.state.showResults) {
         this.setState({ loading: true, errorMsg: '' });
         services.searchYelp(
-          this.state.food,
+          this.state.food ? this.state.food : this.state.food = item,
           this.state.currCoords.latitude,
           this.state.currCoords.longitude
         )
@@ -114,11 +120,10 @@ class App extends React.Component {
               </div>
               )
             }
-            <Button
+            <Button 
               handleClick={this.handleGoClick}
-              text={this.state.showResults ? 'BACK' : 'GO'}
+              text={this.state.showResults ? 'BACK' : 'FEED ME'}
             />
-            <FacebookButton />
           </div>)
         }
         <Yelp />
