@@ -6,6 +6,8 @@ var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
 
 module.exports.sendSms = function(to, message){
+  let outNum = '+1' + to;
+  let goingMess = 'Hi somebody would like to for you to join them at ' + message;
   // client.sendMessage({
 
   //   to: '+15046215709', // Any number Twilio can deliver to
@@ -26,12 +28,11 @@ module.exports.sendSms = function(to, message){
   //     }
   // });
 
-
   client.messages.create({
-      body: 'Hello from button route',
-      to: '+15046215709',  // Text this number
-      from: '+15045027088' // From a valid Twilio number
-  }, function(err, message) {
+    body: goingMess,
+    to: outNum,  // Text this number
+    from: '+15045027088', // From a valid Twilio number
+  }, (err, message) => {
       console.log(message.sid);
   });
 };
