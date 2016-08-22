@@ -28,10 +28,10 @@ module.exports.sendSms = function(to, message){
 
 
   client.messages.create({
-      body: 'Hello from button route',
-      to: '+15046215709',  // Text this number
-      from: '+15045027088' // From a valid Twilio number
-  }, function(err, message) {
+    body: 'Hello from button route',
+    to: '+15046215709',  // Text this number
+    from: '+15045027088', // From a valid Twilio number
+  }, (err, message) => {
       console.log(message.sid);
   });
 };
