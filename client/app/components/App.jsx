@@ -6,18 +6,20 @@ import helpers from '../helpers';
 import services from '../services';
 import testData from './dev_components/testdata.js';
 import Button from './Button.jsx';
-import FacebookButton from './facebookButton.jsx';
 import Load from './Load.jsx';
 import Results from './Results.jsx';
 import Search from './Search.jsx';
 import Yelp from './Yelp.jsx';
 
+// import FacebookButton from './facebookButton.jsx';
 // import ErrorMsg from './ErrorMsg.jsx';
 // import Coords from './dev_components/Coords.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleGoClick = this.handleGoClick.bind(this);
+    this.handleRandomClick = this.handleRandomClick.bind(this);    
     this.handleSearchInput = this.handleSearchInput.bind(this);
 
     this.state = {
@@ -94,6 +96,33 @@ class App extends React.Component {
     });
   }
 
+  handleRandomClick() {
+    this.setState({ showResults: !this.state.showResults }, () => {
+      if (this.state.showResults) {
+        this.setState({ loading: true, errorMsg: '' });
+        services.searchYelp(
+          this.state.food = 'taco',
+          this.state.currCoords.latitude,
+          this.state.currCoords.longitude
+        )
+        .then((results) => {
+          console.log(results);
+          this.setState({
+            errorMsg: '',
+            loading: false,
+            foodData: results.businesses[0],
+          });
+        })
+        .catch(err => {
+          console.error('Yelp search error', err);
+          this.setState({
+            errorMsg: 'Error with Yelp server. Please try again.',
+          });
+        });
+      }
+    });
+  }
+
   handleSearchInput(e) {
     this.setState({ food: e.target.value });
   }
@@ -101,7 +130,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>course-IT</h1>
+        <h1>course.it</h1>
         { this.state.loading
           ? <Load />
           :
@@ -124,9 +153,12 @@ class App extends React.Component {
               handleClick={this.handleGoClick}
               text={this.state.showResults ? 'BACK' : 'FEED ME'}
             />
+            <RandomButton 
+              handleClick={this.handleRandomClick}
+              text={this.state.showResults ? 'BACK' : 'FEED ME'}
+            />
           </div>)
         }
-        <Yelp />
       </div>
     );
   }
