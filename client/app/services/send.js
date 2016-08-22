@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const send = {
   sendSMS: (to, message) => {
-    const reqURI = `/api/v1/search?food=${food}&cll=${lat},${long}`;
+    const reqURI = `/joinMe}`;
     return axios.get(reqURI)
       .then(results =>
         // handle error
