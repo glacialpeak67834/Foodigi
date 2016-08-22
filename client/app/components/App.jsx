@@ -9,6 +9,7 @@ import Yelp from './Yelp.jsx';
 // import Coords from './dev_components/Coords.jsx';
 import helpers from '../helpers';
 import services from '../services';
+import FacebookButton from './facebookButton.jsx';
 
 import testData from './dev_components/testdata.js';
 
@@ -94,7 +95,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>foodigi</h1>
+        <h1>course-IT</h1>
         { this.state.loading
           ? <Load />
           :
@@ -117,6 +118,7 @@ class App extends React.Component {
               handleClick={this.handleGoClick}
               text={this.state.showResults ? 'BACK' : 'GO'}
             />
+            <FacebookButton />
           </div>)
         }
         <Yelp />
