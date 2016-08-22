@@ -78,6 +78,7 @@ class App extends React.Component {
         )
         .then((results) => {
           console.log(results);
+          console.log("this is the adress:",results.businesses[0].location.address[0]);
           this.setState({
             errorMsg: '',
             loading: false,

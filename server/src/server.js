@@ -17,7 +17,7 @@ export default function (app) {
   app.use(express.static(publicPath));
 
   app.get('/joinMe', function () {
-    client.sendSms();
+    client.sendSms('5043174866', 'blue nile');
     console.log('route hit');
   });
 // app.post('/login',
