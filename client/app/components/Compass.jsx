@@ -1,9 +1,12 @@
-import _ from 'underscore';
+import '../css/compassStyle.scss';
 
+import _ from 'underscore';
+import axios from 'axios';
 import React from 'react';
+
 import helpers from '../helpers';
 import Distance from './Distance.jsx';
-import '../css/compassStyle.scss';
+import InviteButton from './InviteButton.jsx';
 
 const degrees = _.range(0, 360, 30);
 const cardLabels = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
@@ -12,6 +15,13 @@ const cardLabels = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
 const Compass = ({ compassHeading, origin, dest, foodQuery }) => (
   <div>
+    <InviteButton 
+      handleClick={() => {
+        console.log('Sending SMS!');
+        
+        console.log('SMS Sent!');
+      }}
+    />
     <div id="compass" style={{ transform: `rotateZ(-${compassHeading}deg)` }} >
       <div id="spinner" style={{ transition: 'none' }}>
         <div id="pin" />
