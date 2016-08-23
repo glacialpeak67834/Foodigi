@@ -1,10 +1,10 @@
 import '../css/compassStyle.scss';
 
 import _ from 'underscore';
-import axios from 'axios';
 import React from 'react';
 
 import helpers from '../helpers';
+import send from '../services/send';
 import Distance from './Distance.jsx';
 import InviteButton from './InviteButton.jsx';
 
@@ -18,7 +18,9 @@ const Compass = ({ compassHeading, origin, dest, foodQuery }) => (
     <InviteButton 
       handleClick={() => {
         console.log('Sending SMS!');
-        
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', "/joinme", true);
+        xhr.send();
         console.log('SMS Sent!');
       }}
     />
