@@ -6,8 +6,8 @@ var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
 
 module.exports.sendSms = function(to, message){
-  let outNum = '+1' + to;
-  let goingMess = 'Hi somebody would like to for you to join them at ' + message;
+  var outNum = '+1' + to;
+  var goingMess = 'Hi somebody would like to for you to join them at ' + message;
   // client.sendMessage({
 
   //   to: '+15046215709', // Any number Twilio can deliver to
